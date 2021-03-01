@@ -6,7 +6,7 @@ const url = require('url');
 let mainWindow;
 
 function createWindow() {
-	mainWindow = new BrowserWindow({ width: 800, height: 600 });
+	mainWindow = new BrowserWindow({ width: 400, height: 600 });
 
 	const devMode = process.env.NODE_ENV === 'development';
 	const startURL = devMode
@@ -18,6 +18,8 @@ function createWindow() {
 		  });
 
 	mainWindow.loadURL(startURL);
+
+	devMode && mainWindow.setMenu(null);
 	devMode && mainWindow.webContents.openDevTools();
 	mainWindow.on('closed', () => {
 		mainWindow = null;
